@@ -1,0 +1,45 @@
+<main class="profile-page">
+    <section class="section-profile-cover section-shaped my-0">
+        <!-- Circles background -->
+        <div class="shape shape-style-1 shape-primary alpha-4">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <!-- SVG separator -->
+        <div class="separator separator-bottom separator-skew">
+            <svg x="0" y="0" viewBox="0 0 2560 100" preserveAspectRatio="none" version="1.1"
+                xmlns="http://www.w3.org/2000/svg">
+                <polygon class="fill-white" points="2560 0 2560 100 0 100"></polygon>
+            </svg>
+        </div>
+    </section>
+    <section class="section">
+        <div class="container">
+            <div class="card card-profile shadow mt--300">
+                <div class="px-4 pt-4 pb-4">
+                    <div>
+                        <b><label>Enter Url(s) <i>(Download using multiple urls, add each on new line)</i></label></b>
+                        <textarea class="form-control" [(ngModel)]="url" rows="20" [disabled]="loading"> </textarea>
+                        <button class="btn btn-default btn-round btn-block btn-lg mt-4 download-btn"
+                            [disabled]="loading || !url" (click)="fetch(url)">{{loading?'Please wait....':'Download'}}
+                        </button>
+                    </div>
+                </div>
+                <div class="px-4 pt-4 pb-4" *ngIf="loading || failedUrls.length > 0">
+                    <div>
+                        <b class="pt-4 text-green">{{"Downloaded: "+count+" of "+arr.length}}</b>
+                    </div>
+                    <div>
+                        <b class="pt-4 text-red">{{"Failed: "+failedUrls.length}}</b>
+                        <div><a href="fUrl" *ngFor="let fUrl of failedUrls">{{fUrl}}</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
