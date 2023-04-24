@@ -36,7 +36,7 @@
                     </div>
                     <div>
                         <b class="pt-4 text-red">{{"Failed: "+failedUrls.length}}</b>
-                        <div><a href="fUrl" *ngFor="let fUrl of failedUrls">{{fUrl}}</a></div>
+                        <div *ngFor="let fUrl of failedUrls"><a href="fUrl">{{fUrl}}</a></div>
                     </div>
                 </div>
             </div>

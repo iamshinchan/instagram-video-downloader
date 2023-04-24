@@ -3,7 +3,9 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  localhostProxy: `http://localhost:4200/graphql/query/`,
+  instagramProxyUrl: 'http://localhost:2547/proxy'
 };
 
 /*

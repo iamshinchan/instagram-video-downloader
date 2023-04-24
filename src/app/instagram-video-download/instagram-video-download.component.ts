@@ -45,11 +45,12 @@ export class InstagramVideoDownloadComponent implements OnInit {
       this.instagramVideoDownloadService.fetchResult(query_hash, JSON.stringify({ shortcode: url })).pipe(
         catchError((error) => {
           this.failedUrls.push(url);
+          this.loading = false;
           resolve(error);
           return of(null); // return an observable with a null value to continue the observable chain
         })
       ).subscribe(async (res: any) => {
-        if (res.data.shortcode_media) {
+        if (res && res.data && res.data.shortcode_media) {
           if (res.data.shortcode_media.video_url) {
             await this.instagramVideoDownloadService.downloadFile(res.data.shortcode_media.video_url, res.data.shortcode_media.owner.username, '.mp4');
             this.count++;
@@ -66,7 +67,6 @@ export class InstagramVideoDownloadComponent implements OnInit {
           }
 
         } else {
-          this.failedUrls.push(url);
           resolve(true);
         }
       })
