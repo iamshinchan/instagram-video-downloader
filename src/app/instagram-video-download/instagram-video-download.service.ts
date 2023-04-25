@@ -17,17 +17,22 @@ export class InstagramVideoDownloadService {
   }
   downloadFile(url: string, fileName, extension) {
     return new Promise((resolve, reject) => {
-      let proxyUrl = environment.instagramProxyUrl + `?fileName=${fileName}&url=`;
-      url = proxyUrl + encodeURIComponent(url);
-      const link = document.createElement('a');
-      link.style.display = 'none';
-      link.href = url;
-      link.setAttribute('download', fileName + extension);
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-      window.URL.revokeObjectURL(url);
-      resolve(true);
+      try {
+        let proxyUrl = environment.instagramProxyUrl + `?fileName=${fileName}&url=`;
+        url = proxyUrl + encodeURIComponent(url);
+        const link = document.createElement('a');
+        link.style.display = 'none';
+        link.href = url;
+        link.setAttribute('download', fileName + extension);
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        window.URL.revokeObjectURL(url);
+        resolve(true);
+      } catch (error) {
+        console.error('Failed to download file:', error);
+        resolve(true);
+      }
     })
   }
 }
