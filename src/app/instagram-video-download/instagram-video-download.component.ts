@@ -24,13 +24,13 @@ export class InstagramVideoDownloadComponent implements OnInit {
     this.loading = true;
     this.arr = urls.split("\n");
     const getInstagramPostId = (url) => {
-      if (!url.endsWith("/")) {
+      if (!url.endsWith("/") && url.length > 0) {
         url += "/";
       }
       const match = url.match(/\/p\/([a-zA-Z0-9_-]+)/);
       return match ? match[1] : '';
     };
-    this.arr = this.arr.map(url => getInstagramPostId(url.replace(/\s/g, "")));
+    this.arr = this.arr.map(url => getInstagramPostId(url.replace(/\s/g, ""))).filter(n => n);
     this.count = 0;
     this.failedUrls = [];
     for (let i = 0; i < this.arr.length; i++) {

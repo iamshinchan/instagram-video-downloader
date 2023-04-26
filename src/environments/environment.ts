@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  localhostProxy: `http://localhost:4200/graphql/query/`,
-  instagramProxyUrl: 'https://instagram-video-downloader-proxy.onrender.com/proxy'
+  localhostProxy: `http://localhost:4000/graphql/query/`,
+  instagramProxyUrl: 'http://localhost:4000/proxy'
 };
 
 /*

@@ -1,5 +1,5 @@
 export const environment = {
   production: true,
-  localhostProxy: `https://iamshinchan.github.io/graphql/query/`,
+  localhostProxy: `https://instagram-video-downloader-proxy.onrender.com/graphql/query/`,
   instagramProxyUrl: 'https://instagram-video-downloader-proxy.onrender.com/proxy'
 };

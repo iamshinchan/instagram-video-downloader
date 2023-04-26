@@ -30,7 +30,7 @@
                         </button>
                     </div>
                 </div>
-                <div class="px-4 pt-4 pb-4" *ngIf="loading || failedUrls.length > 0">
+                <div class="px-4 pt-4 pb-4" *ngIf="loading || failedUrls.length > 0 || count> 0">
                     <div>
                         <b class="pt-4 text-green">{{"Downloaded: "+count+" of "+arr.length}}</b>
                     </div>
