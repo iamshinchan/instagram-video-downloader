@@ -27,8 +27,9 @@ export class InstagramVideoDownloadComponent implements OnInit {
       if (!url.endsWith("/") && url.length > 0) {
         url += "/";
       }
-      const match = url.match(/\/p\/([a-zA-Z0-9_-]+)/);
-      return match ? match[1] : '';
+      let urlSplit = url.split("/");
+      const match = url.split("/")[urlSplit.length - 2];
+      return match;
     };
     this.arr = this.arr.map(url => getInstagramPostId(url.replace(/\s/g, ""))).filter(n => n);
     this.count = 0;
